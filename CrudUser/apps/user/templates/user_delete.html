@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form method="post">
+    {% csrf_token %}
+    <h3>¿Desea eliminar el registro de {{ object.name }}</h3>
+    <button  type="submit" name="button">Si, eliminar</button>
+    <a  href='{% url 'user_list' %}'>Cancelar</a>
+
+  </form>
+  </body>
+</html>

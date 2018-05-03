@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Crud</title>
+  </head>
+  <body>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td>#</td>
+			<td>Nombre</td>
+			<td>Edad</td>
+      <td>Fecha de nacimiento</td>
+		</tr>
+	</thead>
+	<tbody>
+		{% if object_list %}
+		{% for user in object_list %}
+		<tr>
+			<td>{{ user.id }}</td>
+			<td>{{ user.name }}</td>
+			<td>{{ user.age }}</td>
+			<td>{{ user.birthday }}</td>
+			<td><a href='{% url 'user_edit' user.id %}'>Editar</a></td>
+			<td><a href='{% url 'user_delete' user.id %}'>Eliminar</a></td>
+		</tr>
+		{% endfor %}
+
+		{% else %}
+		<h1>No hay registros de usuarios</h1>
+		{% endif %}
+	</tbody>
+</table>
+	<li>
+		{% if page_obj.has_previous %}
+       	 <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+		{% endif %}
+        </li>
+	<li>
+		{% if page_obj.has_next %}
+     	 <a href="?page={{ page_obj.next_page_number }}">Next</a>
+    	{% endif %}
+    </li>
+  </body>
+</html>
